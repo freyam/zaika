@@ -1,36 +1,29 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const mongoose = require('mongoose');
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const mongoose = require("mongoose");
 const PORT = 4000;
-const DB_NAME = "tutorial"
-
-// routes
-var testAPIRouter = require("./routes/testAPI");
-var UserRouter = require("./routes/Users");
-var VendorRouter = require("./routes/Vendors");
-var FoodRouter = require("./routes/FoodItems");
-// var WalletRouter = require("./routes/Wallet");
+const DB_NAME = "tutorial";
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Connection to MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/' + DB_NAME, { useNewUrlParser: true });
-const connection = mongoose.connection;
-connection.once('open', function() {
+mongoose.connect("mongodb://127.0.0.1:27017/" + DB_NAME, {
+    useNewUrlParser: true,
+});
+mongoose.connection.once("open", function () {
     console.log("MongoDB database connection established successfully !");
-})
+});
 
-// setup API endpoints
-app.use("/testAPI", testAPIRouter);
+var UserRouter = require("./routes/Users");
 app.use("/user", UserRouter);
+var VendorRouter = require("./routes/Vendors");
 app.use("/vendor", VendorRouter);
+var FoodRouter = require("./routes/Food");
 app.use("/fooditem", FoodRouter);
-// app.use("/wallet", WalletRouter);
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
     console.log("Server is running on Port: " + PORT);
 });

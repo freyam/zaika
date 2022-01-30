@@ -143,8 +143,8 @@ function DashBoardUser() {
         tagsFilter(TagsSelection, setFI, setSortedFI);
     }
 
-    function applySortADFilter() {
-        sortADFilter(sortAD, setFI, setSortedFI);
+    function applysortFilters() {
+        sortFilters(sortAD, setFI, setSortedFI);
     }
 
     function handleClickOpen() {
@@ -400,7 +400,7 @@ function DashBoardUser() {
                                 </TextField>
                             </Grid>
                             <Grid item>
-                                <Button onClick={applySortADFilter}>
+                                <Button onClick={applysortFilters}>
                                     APPLY
                                 </Button>
                             </Grid>
@@ -518,31 +518,31 @@ function showImportant(mainFI, addOnsIDX) {
     else return null;
 }
 
-function sortADFilter(sortAD, setFI, setSortedFI) {
+function sortFilters(sortAD, setFI, setSortedFI) {
     if (sortAD == "0") {
         axios
-            .get("http://localhost:4000/fooditem/SortADFilter0")
+            .get("http://localhost:4000/fooditem/sortFilters0")
             .then((response) => {
                 setFI(response.data);
                 setSortedFI(response.data);
             });
     } else if (sortAD == "1") {
         axios
-            .get("http://localhost:4000/fooditem/SortADFilter1")
+            .get("http://localhost:4000/fooditem/sortFilters1")
             .then((response) => {
                 setFI(response.data);
                 setSortedFI(response.data);
             });
     } else if (sortAD == "2") {
         axios
-            .get("http://localhost:4000/fooditem/SortADFilter2")
+            .get("http://localhost:4000/fooditem/sortFilters2")
             .then((response) => {
                 setFI(response.data);
                 setSortedFI(response.data);
             });
     } else if (sortAD == "3") {
         axios
-            .get("http://localhost:4000/fooditem/SortADFilter3")
+            .get("http://localhost:4000/fooditem/sortFilters3")
             .then((response) => {
                 setFI(response.data);
                 setSortedFI(response.data);

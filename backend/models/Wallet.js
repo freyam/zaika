@@ -1,17 +1,15 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 
-// Create Schema
-const WalletSchema = new Schema({
-	name: {
-		type: String,
-		required: true
-	},
+const WalletSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
     amount: {
         type: Number,
         required: false,
-        default: 0
-    }
+        default: 10,
+    },
 });
 
 module.exports = User = mongoose.model("Wallet", WalletSchema);

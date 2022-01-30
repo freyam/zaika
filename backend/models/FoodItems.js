@@ -1,7 +1,27 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 
-const FoodItemSchema = new Schema({
+const FoodItemSchema = new mongoose.Schema({
+    type: {
+        type: String,
+        required: true,
+        enum: ["veg", "non-veg"],
+    },
+    add_ons: {
+        type: Array,
+        required: false,
+        default: [],
+    },
+    tags: {
+        type: Array,
+        required: false,
+        default: [],
+    },
+
+    addOnsPrice: {
+        type: Array,
+        required: false,
+        default: {},
+    },
     name: {
         type: String,
         required: true,
@@ -18,29 +38,9 @@ const FoodItemSchema = new Schema({
         min: 0,
         max: 10,
     },
-    type: {
-        type: String,
-        required: true,
-        enum: ["veg", "non-veg"],
-    },
-    add_ons: {
-        type: Array,
-        required: false,
-        default: [],
-    },
-    tags: {
-        type: Array,
-        required: false,
-        default: [],
-    },
     vendor: {
         type: String,
         required: true,
-    },
-    addOnsPrice: {
-        type: Array,
-        required: false,
-        default: {},
     },
 });
 
